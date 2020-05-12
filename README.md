@@ -17,3 +17,6 @@ If you want recommendations on investments, look elsewhere. This ain't it chief.
 - [Tensorflow](https://pypi.org/project/tensorflow/)
 - [Keras](https://pypi.org/project/Keras/)
 
+## Credits
+Original state of the code and some of the learned knowledge was to no minor
+degree thanks to [TannerGilbert tutorial](https://github.com/TannerGilbert/Tutorials) on the matter.
