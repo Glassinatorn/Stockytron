@@ -1,0 +1,9 @@
+{
+    "<domain1>": {
+        "URL": "<example-URL>",
+        "parameters": {
+            "everything": "<parameter>",
+            "last-5min": "<parameter>",
+        }
+    }
+}

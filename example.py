@@ -2,6 +2,7 @@
 import os
 from shape_data import *
 from present_results import *
+from gather_data import *
 
 
 # getting the data
@@ -10,6 +11,10 @@ df.head()
 df = df['Open'].values
 df = df.reshape(-1, 1)
 df[:5]
+
+# TODO: gather tokens and data
+# tokens = get_tokens('.tokens')
+# print(get_data('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=demo'))
 
 # formatting the data into seperate training andtesting sets
 scaler = MinMaxScaler(feature_range=(0,1))
