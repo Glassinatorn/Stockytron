@@ -3,7 +3,7 @@
         "URL": "<example-URL>",
         "parameters": {
             "everything": "<parameter>",
-            "everything": "<parameter>",
+            "5min": "<parameter>",
         }
     }
 }
