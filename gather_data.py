@@ -54,3 +54,29 @@ def get_data(URL):
     response = requests.get(URL)
 
     return json.loads(response.content)
+
+
+def recr_dict_search(obj, search, result):
+    """
+    Searches a dictionary recursively until the sought after field is found.
+
+    Parameters
+    ----------
+    obj : dict
+        The dictionary which is to be searched through.
+    search : string
+        The sought after field.
+    result : array
+        The array which values from the sought after field is to be appended
+        into.
+
+    Returns
+    -------
+    array
+    """
+
+    for key in obj:
+        if search in obj[key]:
+            result.extend([obj[key][search]])
+        elif type(obj[key]) == dict:
+            recr_dict_search(obj[key], search, result)
