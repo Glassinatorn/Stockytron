@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 """
 Function to show the predictions in form of a graph
 """
-def print_graph(df, y_train, y_test, scaler, predictions):
+def create_graph(df, y_train, y_test, scaler, predictions):
     fig, ax = plt.subplots(figsize=(8,4))
     plt.plot(df, color='red',  label="True Price")
     ax.plot(range(len(y_train)+50,len(y_train)+50+len(predictions)),predictions, color='blue', label='Predicted Testing Price')
@@ -23,7 +23,7 @@ def print_graph(df, y_train, y_test, scaler, predictions):
 """
 Function to build a array of predictions to act upon
 """
-def print_predictions(x_test, model, scaler):
+def create_predictions(x_test, model, scaler):
     # printing predictions
     x = x_test[-1]
     num_timesteps = 100
