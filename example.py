@@ -8,7 +8,7 @@ from sklearn.model_selection import cross_val_score
 # creating a scaler to scale inputs
 scaler = MinMaxScaler(feature_range=(0,1))
 
-to_test = ["Open", "High", "Low", "Adj", "Close", "Volume"]
+to_test = ["Open","High","Low","Close","Adj","Volume"]
 
 # getting the data
 df = pd.read_csv('AAPL.csv')
@@ -23,10 +23,10 @@ for column in to_test:
 
     # build model if one is not available
     if(not os.path.exists('saved_model')):
-        model = lstm_model(x_train, 0.2, 96, 4)
+        model = lstm_model(x_train, 0.1, 96, 4)
         model.compile(loss='mean_squared_error', optimizer='adam')
 
-        model.fit(x_train, y_train, epochs=10, batch_size=32)
+        model.fit(x_train, y_train, epochs=100, batch_size=32)
 
         #model.save('model.h5')
     else:
@@ -36,10 +36,9 @@ for column in to_test:
     predictions = model.predict(x_test)
     predictions = scaler.inverse_transform(predictions)
 
-    print_graph(df, y_train, y_test, scaler, predictions)
-    print(print_predictions(x_test, model, scaler))
+    create_graph(df, y_train, y_test, scaler, predictions)
+    print(create_predictions(x_test, model, scaler))
     mean_y_test = y_test.mean()
-    mean_y_pred = print_predictions(x_test, model, scaler)
+    mean_y_pred = create_predictions(x_test, model, scaler)
     accuracy = (mean_y_test / mean_y_pred) * 100, 2
     #print(accuracy)
-

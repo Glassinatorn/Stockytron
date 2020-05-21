@@ -17,7 +17,7 @@ def create_graph(df, y_train, y_test, scaler, predictions):
     ax.plot(y_test_scaled, color='red', label='True Testing Price')
     plt.plot(predictions, color='blue', label='Predicted Testing Price')
     plt.legend()
-    plt.savefig('tmp2.png')
+    plt.savefig('tmp3.png')
 
 
 """
