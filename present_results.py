@@ -4,12 +4,12 @@ import matplotlib.pyplot as plt
 """
 Function to show the predictions in form of a graph
 """
-def create_graph(df, y_train, y_test, scaler, predictions):
+def create_graph(df, y_train, y_test, scaler, predictions, name):
     fig, ax = plt.subplots(figsize=(8,4))
     plt.plot(df, color='red',  label="True Price")
     ax.plot(range(len(y_train)+50,len(y_train)+50+len(predictions)),predictions, color='blue', label='Predicted Testing Price')
     plt.legend()
-    plt.savefig('tmp.png')
+    plt.savefig(name+'_long.png')
 
     # show focused prediction graph
     y_test_scaled = scaler.inverse_transform(y_test.reshape(-1, 1))
@@ -17,7 +17,7 @@ def create_graph(df, y_train, y_test, scaler, predictions):
     ax.plot(y_test_scaled, color='red', label='True Testing Price')
     plt.plot(predictions, color='blue', label='Predicted Testing Price')
     plt.legend()
-    plt.savefig('tmp3.png')
+    plt.savefig(name+'_short.png')
 
 
 """

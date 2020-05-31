@@ -11,9 +11,10 @@ scaler = MinMaxScaler(feature_range=(0,1))
 to_test = ["Open","High","Low","Close","Adj","Volume"]
 
 # getting the data
-df = pd.read_csv('AAPL.csv')
-df.head()
 for column in to_test:
+    df = pd.read_csv('AAPL.csv')
+    df.head()
+
     df = df[column].values
     df = df.reshape(-1, 1)
     df[:5]
@@ -36,7 +37,7 @@ for column in to_test:
     predictions = model.predict(x_test)
     predictions = scaler.inverse_transform(predictions)
 
-    create_graph(df, y_train, y_test, scaler, predictions)
+    create_graph(df, y_train, y_test, scaler, predictions, column)
     print(create_predictions(x_test, model, scaler))
     mean_y_test = y_test.mean()
     mean_y_pred = create_predictions(x_test, model, scaler)
