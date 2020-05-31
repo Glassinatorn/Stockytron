@@ -1,10 +1,25 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-"""
-Function to show the predictions in form of a graph
-"""
 def create_graph(df, y_train, y_test, scaler, predictions, name):
+    """
+    A function to show the predictions in the form of a graph
+
+    Parameters
+    ----------
+    df : array
+        The dataset containing real prices.
+    y_train : array
+        Training dataset.
+    y_test : array
+        Validation dataset.
+    scaler : MinMaxScaler
+        A scaler to scale features between a min and max value.
+    predictions : array
+        Dataset containing the predicted prices.
+    name : string
+        The base name of the pictures.
+    """
     fig, ax = plt.subplots(figsize=(8,4))
     plt.plot(df, color='red',  label="True Price")
     ax.plot(range(len(y_train)+50,len(y_train)+50+len(predictions)),predictions, color='blue', label='Predicted Testing Price')
@@ -20,11 +35,24 @@ def create_graph(df, y_train, y_test, scaler, predictions, name):
     plt.savefig(name+'_short.png')
 
 
-"""
-Function to build a array of predictions to act upon
-"""
 def create_predictions(x_test, model, scaler):
-    # printing predictions
+    """
+    Function to build a array of predictions to act upon.
+
+    Parameters
+    ----------
+    x_test : array
+        Training data.
+    model : Sequential
+        A model which has been trained.
+    scaler : MinMaxScaler
+        A scaler to scale features between a min and max value.
+
+    Returns
+    -------
+    Preds: array
+        Predictions for which to act upon.
+    """
     x = x_test[-1]
     num_timesteps = 100
     preds = []
