@@ -21,16 +21,17 @@ def create_graph(df, y_train, y_test, scaler, predictions, name):
         The base name of the pictures.
     """
     fig, ax = plt.subplots(figsize=(8,4))
-    plt.plot(df, color='red',  label="True Price")
-    ax.plot(range(len(y_train)+50,len(y_train)+50+len(predictions)),predictions, color='blue', label='Predicted Testing Price')
+    plt.plot(df, color='black',  label="True Price")
+    ax.plot(range(len(y_train)+50,len(y_train)+50+len(predictions)),predictions,
+            color='green', label='Predicted Testing Price')
     plt.legend()
     plt.savefig(name+'_long.png')
 
     # show focused prediction graph
     y_test_scaled = scaler.inverse_transform(y_test.reshape(-1, 1))
     fig, ax = plt.subplots(figsize=(8,4))
-    ax.plot(y_test_scaled, color='red', label='True Testing Price')
-    plt.plot(predictions, color='blue', label='Predicted Testing Price')
+    ax.plot(y_test_scaled, color='black', label='True Testing Price')
+    plt.plot(predictions, color='green', label='Predicted Testing Price')
     plt.legend()
     plt.savefig(name+'_short.png')
 
