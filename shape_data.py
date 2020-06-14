@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from keras.models import Sequential, load_model
-from keras.layers import LSTM, Dense, Dropout
+from keras.layers import LSTM, Dense, Dropout, GRU
 
 def create_dataset(df):
     """
@@ -99,14 +99,14 @@ def lstm_model(x_train, drop, units, layers):
     """
 
     model = Sequential()
-    model.add(LSTM(units, return_sequences=True, input_shape=(x_train.shape[1], 1)))
+    model.add(GRU(units, return_sequences=True, input_shape=(x_train.shape[1], 1)))
     model.add(Dropout(drop))
 
     for _ in range (0, (layers - 1)):
-        model.add(LSTM(units, return_sequences=True))
+        model.add(GRU(units, return_sequences=True))
         model.add(Dropout(drop))
 
-    model.add(LSTM(units))
+    model.add(GRU(units))
     model.add(Dropout(drop))
     model.add(Dense(units=1))
 
