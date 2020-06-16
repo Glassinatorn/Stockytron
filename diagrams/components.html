@@ -11,7 +11,13 @@
 
         <div class="mermaid">
             graph TD
-            start --> check_
+            start --> gather[/gather data/]
+            gather --> process
+            process -.-> store[/store in database/]
+            process --> train
+            store -.-> train
+            train --> validate[evaluate accuracy]
+            validate --> simulate[simulate historical <br>investment]
         </div>
     </body>
 </html>
