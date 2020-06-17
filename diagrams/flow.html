@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <meta charset="utf-8">
+        <title>Component diagram</title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.0/dist/mermaid.min.js">
+            mid.initialize({startOnLoad:true});
+        </script>
+
+        <div class="mermaid">
+            graph TD
+            start --> gather[/gather data/]
+            gather --> process[process data]
+            process -.-> store_data[/store in database/]
+            process --> train
+            store_data -.-> train
+            train --> validate[evaluate accuracy]
+            validate --> accurate{accurate?}
+            accurate --> |no|train
+            accurate --> |yes|store_model[/store model/]
+            store_model --> simulate[simulate historical <br>investment]
+        </div>
+    </body>
+</html>
+
