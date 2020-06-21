@@ -13,19 +13,31 @@ If you want recommendations on investments, look elsewhere. This ain't it chief.
 - [Numpy](https://pypi.org/project/numpy/)
 - [Pandas](https://pypi.org/project/pandas/)
 - [Matplotlib](https://pypi.org/project/matplotlib/)
-- [Scikit-learn](https://pypi.org/project/scikit-learn/)
 - [Tensorflow](https://pypi.org/project/tensorflow/)
 - [Keras](https://pypi.org/project/Keras/)
 
-# Implementation
+# Setup
+Run the setup file with 'python3 setup.py' to install the required packages and
+choose whether to use a gpu or cpu to train the model.
+Be aware that in the current implementation, only GPUs that support CUDA can be
+used due to tensorflow's implementation.
+
+# Implementation progress
+- [v] Gatherer
+- [v] Builder
+- [] Tester
+- [] Webpage
+- [] Django
+- [] Database
 
 ## Component diagram
 The components of the program can be seen in the diagram below.
-
+![Component diagram](diagrams/components.png)
 
 ## Flow diagram
 The general planned flow of execution for the program can be seen in the diagram
 below.
+![Flow diagram](diagrams/flow.png)
 
 ## Credits
 Original state of the code with a LSTM model, as well as some of the learned knowledge was to no minor
