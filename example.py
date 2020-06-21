@@ -25,7 +25,7 @@ x_train,y_train,x_test,y_test = shape_dataset(scaler, df)
 
 # build model if one is not available
 if(not os.path.exists('saved_model.h5')):
-    model = lstm_model(x_train, 0.01, 96, 4)
+    model = gru_model(x_train, 0.01, 96, 4)
     model.compile(loss='mean_squared_error', optimizer='adam')
 
     model.fit(x_train, y_train, epochs=2000, batch_size=1762)

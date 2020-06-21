@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from keras.models import Sequential, load_model
-from keras.layers import LSTM, Dense, Dropout, GRU
+from keras.layers import Dense, Dropout, GRU
 
 def create_dataset(df):
     """
@@ -23,6 +23,7 @@ def create_dataset(df):
 
     x = []
     y = []
+
     for i in range(50, df.shape[0]):
         x.append(df[i-50:i, 0])
         y.append(df[i, 0])
@@ -68,16 +69,16 @@ def shape_dataset(scaler, df):
     x_test, y_test = create_dataset(dataset_test)
     x_test[:1]
 
-    # Reshape features for LSTM Layer
+    # Reshape features for GRU Layer
     x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
     x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
 
     return x_train,y_train,x_test,y_test
 
 
-def lstm_model(x_train, drop, units, layers):
+def gru_model(x_train, drop, units, layers):
     """
-    Function to build a LSTM model with which to predict real-time series based
+    Function to build a GRU model with which to predict real-time series based
     on historical data.
 
     Parameters
@@ -95,7 +96,7 @@ def lstm_model(x_train, drop, units, layers):
     Returns
     -------
     model : Sequential
-        A LSTM model that is ready to be trained.
+        A GRU model that is ready to be trained.
     """
 
     model = Sequential()
