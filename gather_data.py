@@ -1,7 +1,6 @@
 """Gather data and credentials
 
 This file simply contains functions meant to gather data and credentials.
-
 """
 
 import json

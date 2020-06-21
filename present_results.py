@@ -20,6 +20,7 @@ def create_graph(df, y_train, y_test, scaler, predictions, name):
     name : string
         The base name of the pictures.
     """
+
     fig, ax = plt.subplots(figsize=(8,4))
     plt.plot(df, color='black',  label="True Price")
     ax.plot(range(len(y_train)+50,len(y_train)+50+len(predictions)),predictions,
@@ -54,9 +55,11 @@ def create_predictions(x_test, model, scaler):
     Preds: array
         Predictions for which to act upon.
     """
+
     x = x_test[-1]
     num_timesteps = 100
     preds = []
+
     for i in range(num_timesteps):
         data = np.expand_dims(x, axis=0)
         prediction = model.predict(data)
