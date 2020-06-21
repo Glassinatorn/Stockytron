@@ -1,0 +1,70 @@
+digraph components {
+    graph [
+        charset="UTF-8"
+        label="Component diagram"
+        fontsize=18
+        style="filled"
+        margin=0.2
+
+        /* dark colored scheme */
+        //bgcolor="#343434"
+        //fontcolor=white
+        /* light colored scheme */
+        bgcolor="#ffffff"
+        fontcolor=black
+        rankdir=LR
+    ];
+
+    /* define nodes */
+    /* example: node [shape=box/Msquare/etc] */
+
+    subgraph cluster0 {
+        label="frontend\n(planned)"
+        style=filled
+        color="#ffffff"
+        fillcolor="#ececec"
+        webpage [ label="\n\n\n\n\nWebpage" image="../pictures/webpage.png" shape=none ]
+    }
+
+    subgraph cluster1 {
+        label="Backend"
+        style=filled
+        color="#ffffff"
+        fillcolor="#ececec"
+        database [ label="\n\n\n\nDatabase" image="../pictures/database.png" shape=none ]
+        django [ label="\n\n\n\nDjango" image="../pictures/django.png" shape=none ]
+
+        subgraph cluster3 {
+            label="Stockytron"
+            style=filled
+            color="#ffffff"
+            fillcolor="#999999"
+
+            gatherer [ label="\n\n\n\nGatherer" image="../pictures/box.png" shape=none ]
+            builder [ label="\n\n\n\nBuilder" image="../pictures/box.png" shape=none ]
+            tester [ label="\n\n\n\nTester" image="../pictures/box.png" shape=none ]
+        }
+    }
+
+    subgraph cluster2 {
+        label="Third party APIs"
+        style=filled
+        color="#ffffff"
+        fillcolor="#ececec"
+
+        stock_data [ label="\n\n\n\nStock data" image="../pictures/cloud.png" shape=none ]
+    }
+
+    webpage -> django
+    django -> database
+    django -> tester
+    stock_data -> gatherer
+    gatherer -> database
+    gatherer -> builder
+    builder -> tester
+    tester -> database
+    database -> builder
+    database -> django
+}
+
+
