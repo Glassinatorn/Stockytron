@@ -11,16 +11,26 @@
 
         <div class="mermaid">
             graph TD
-            start --> gather[/gather data/]
+            start(Start) --> gather[/gather data/]
+
+            subgraph Gatherer
             gather --> process[process data]
             process -.-> store_data[/store in database/]
+            end
+
+            subgraph Trainer
             process --> train
-            store_data -.-> train
+            end
+
+            subgraph Tester
             train --> validate[evaluate accuracy]
             validate --> accurate{accurate?}
             accurate --> |no|train
             accurate --> |yes|store_model[/store model/]
-            store_model --> simulate[simulate historical <br>investment]
+            end
+
+            store_model --> simulate(simulate historical <br>investment)
+
         </div>
     </body>
 </html>
