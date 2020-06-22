@@ -6,24 +6,22 @@ This file simply contains functions meant to gather data and credentials.
 import json
 import requests
 
-def get_tokens(token_file):
+def get_json_file(json_file):
     """
-    Function to gather tokens from a file containing them.
-
-    The function gathers data from the file ".token".
+    Function to gather data from a json file.
 
     Parameters
     ----------
-    token_file : string
-        The name of the file to get tokens from.
+    json_file : string
+        The name of the file to get data from.
 
     Returns
     -------
     Dictionary
-        Contains the tokens from the specified file.
+        Contains the data from the specified file.
     """
 
-    with open(token_file, 'r') as tmp_file:
+    with open(json_file, 'r') as tmp_file:
         data = tmp_file.read()
 
     return json.loads(data)
@@ -55,6 +53,24 @@ def get_data(URL):
     return json.loads(response.content)
 
 
+def get_all(tokens, sources):
+    """
+    Function to get all the latest data
+
+    Parameters
+    ----------
+    tokens : dictionary
+        Contains all the tokens for various sources.
+    sources : dictionary
+        Contains all the sources to gather data from.
+
+    Returns
+    -------
+    Dictionary
+        Contains the gathered data.
+    """
+
+
 def recr_dict_search(obj, search, result):
     """
     Searches a dictionary recursively until the sought after field is found.
@@ -79,3 +95,4 @@ def recr_dict_search(obj, search, result):
             result.extend([obj[key][search]])
         elif type(obj[key]) == dict:
             recr_dict_search(obj[key], search, result)
+

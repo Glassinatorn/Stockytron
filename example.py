@@ -4,12 +4,17 @@ import numpy
 from shape_data import *
 from present_results import *
 from gather_data import *
-# from sklearn.model_selection import cross_val_score
 
 # creating a scaler to scale inputs
 scaler = MinMaxScaler(feature_range=(0,1))
 
 to_test = ["Open","High","Low","Close","Adj","Volume"]
+
+tokens = get_json_file(".tokens")
+print(tokens)
+data = get_json_file(".sources")
+print(data)
+
 
 # getting the data
 #for column in to_test:
