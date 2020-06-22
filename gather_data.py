@@ -69,6 +69,8 @@ def get_all(tokens, sources):
     Dictionary
         Contains the gathered data.
     """
+    for source in sources:
+        print("test")
 
 
 def recr_dict_search(obj, search, result):
