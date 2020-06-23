@@ -46,9 +46,11 @@ def get_data(URL):
         Contains the gathered data.
     """
 
+    print("URL: " + URL)
     ses = requests.session()
     ses.verify = '/etc/ssl/certs/ca-certificates.crt'
     response = requests.get(URL)
+    print("response: " + str(response))
 
     return json.loads(response.content)
 
@@ -70,7 +72,10 @@ def get_all(tokens, sources):
         Contains the gathered data.
     """
     for source in sources:
-        print("test")
+        if source != "worldtradingdata":
+            print(get_data(sources[source]["demo"]))
+        else:
+            print(get_data(sources[source]["default"] + tokens[source]))
 
 
 def recr_dict_search(obj, search, result):
