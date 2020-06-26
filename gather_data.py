@@ -1,4 +1,4 @@
-"""Gather data and credentials
+"""Gathers data and credentials
 
 This file simply contains functions meant to gather data and credentials.
 """
@@ -46,11 +46,9 @@ def get_data(URL):
         Contains the gathered data.
     """
 
-    print("URL: " + URL)
     ses = requests.session()
     ses.verify = '/etc/ssl/certs/ca-certificates.crt'
     response = requests.get(URL)
-    print("response: " + str(response))
 
     return json.loads(response.content)
 
@@ -71,12 +69,14 @@ def get_all(tokens, sources):
     Dictionary
         Contains the gathered data.
     """
-    for source in sources:
-        if source != "worldtradingdata":
-            print(get_data(sources[source]["demo"]))
-        else:
-            print(get_data(sources[source]["default"] + tokens[source]))
 
+    all_data = {}
+
+    for source in sources:
+        total_url = sources[source]["demo"] + tokens[source]["demo"]
+        all_data.update(get_data(total_url))
+
+    print(all_data)
 
 def recr_dict_search(obj, search, result):
     """
