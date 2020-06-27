@@ -74,9 +74,10 @@ def get_all(tokens, sources):
 
     for source in sources:
         total_url = sources[source]["demo"] + tokens[source]["demo"]
-        all_data.update(get_data(total_url))
+        tmp = get_data(total_url)
+        all_data.update({source: tmp})
 
-    print(all_data)
+    return all_data
 
 def recr_dict_search(obj, search, result):
     """

@@ -13,6 +13,7 @@ to_test = ["Open","High","Low","Close","Adj","Volume"]
 tokens = get_json_file(".tokens")
 sources = get_json_file(".sources")
 all_data = get_all(tokens, sources)
+print(all_data)
 #
 #
 # # getting the data
