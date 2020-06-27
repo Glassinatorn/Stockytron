@@ -95,7 +95,8 @@ def recr_dict_search(obj, search, result):
 
     Returns
     -------
-    array
+    Array
+        Contains the searched data.
     """
 
     for key in obj:
