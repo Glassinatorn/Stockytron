@@ -12,6 +12,7 @@ If you want recommendations on investments, look elsewhere. This ain't it chief.
 - [Python3](https://www.python.org/)
 - [Numpy](https://pypi.org/project/numpy/)
 - [Pandas](https://pypi.org/project/pandas/)
+- [Scikit-learn](https://pypi.org/project/scikit-learn/)
 - [Matplotlib](https://pypi.org/project/matplotlib/)
 - [Tensorflow](https://pypi.org/project/tensorflow/)
 - [Keras](https://pypi.org/project/Keras/)
@@ -27,8 +28,8 @@ used due to tensorflow's implementation.
 - [v] Builder
 - [] Tester
 - [] Webpage
-- [] Django
-- [] Database
+- [v] Django
+- [v] Database
 
 ## Component diagram
 The components of the program can be seen in the diagram below.
