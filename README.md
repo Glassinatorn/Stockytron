@@ -32,12 +32,12 @@ used due to tensorflow's implementation.
 
 ## Component diagram
 The components of the program can be seen in the diagram below.
-![Component diagram](diagrams/components.png)
+![Component diagram](pictures/components.png)
 
 ## Flow diagram
 The general planned flow of execution for the program can be seen in the diagram
 below.
-![Flow diagram](diagrams/flow.png)
+![Flow diagram](pictures/flow.png)
 
 ## Credits
 Original state of the code with a LSTM model, as well as some of the learned knowledge was to no minor
