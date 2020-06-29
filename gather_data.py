@@ -5,14 +5,15 @@ This file simply contains functions meant to gather data and credentials.
 
 import json
 import requests
+import pandas as pd
 
-def get_json_file(json_file):
+def get_file(data_file):
     """
-    Function to gather data from a json file.
+    Function to gather data from a json or csv file.
 
     Parameters
     ----------
-    json_file : string
+    file : String
         The name of the file to get data from.
 
     Returns
@@ -21,10 +22,14 @@ def get_json_file(json_file):
         Contains the data from the specified file.
     """
 
-    with open(json_file, 'r') as tmp_file:
-        data = tmp_file.read()
+    if "csv" in data_file:
+        data = pd.read_csv(data_file).to_json()
 
-    return json.loads(data)
+    elif "json" in data_file:
+        with open(data_file, 'r') as tmp_file:
+            data = json.loads(tmp_file.read())
+
+    return data
 
 
 def get_data(URL):
@@ -59,9 +64,9 @@ def get_all(tokens, sources):
 
     Parameters
     ----------
-    tokens : dictionary
+    tokens : Dictionary
         Contains all the tokens for various sources.
-    sources : dictionary
+    sources : Dictionary
         Contains all the sources to gather data from.
 
     Returns
@@ -79,17 +84,18 @@ def get_all(tokens, sources):
 
     return all_data
 
+
 def recr_dict_search(obj, search, result):
     """
     Searches a dictionary recursively until the sought after field is found.
 
     Parameters
     ----------
-    obj : dict
+    obj : Dictionary
         The dictionary which is to be searched through.
-    search : string
+    search : String
         The sought after field.
-    result : array
+    result : Array
         The array which values from the sought after field is to be appended
         into.
 
