@@ -3,6 +3,7 @@
 import subprocess
 import sys
 import pymongo
+import gatherer
 
 print("You need to have pip installed.")
 dependencies = ["pandas", "numpy", "sklearn", "keras", "matplotlib",
@@ -15,4 +16,7 @@ for tmp in dependencies:
 
 # setting up database
 db_client = pymongo.MongoClient("mongodb://localhost:27017/")
-stock_db = db_client["stocks"] if "stocks" in db_client.list_database_names()
+stock_db = db_client["stocks"]
+stock_hist = stock_db["history"]
+
+to_insert =
