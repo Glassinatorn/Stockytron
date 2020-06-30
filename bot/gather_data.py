@@ -25,7 +25,7 @@ def get_file(data_file):
     if "csv" in data_file:
         data = pd.read_csv(data_file).to_json()
 
-    elif "json" in data_file:
+    else:
         with open(data_file, 'r') as tmp_file:
             data = json.loads(tmp_file.read())
 
