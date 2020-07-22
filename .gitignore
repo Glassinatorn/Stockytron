@@ -1,6 +1,8 @@
 __pycache__
 data/
 .tokens
+.env
+.secrets
 
 # Django
 db.sqlite3
