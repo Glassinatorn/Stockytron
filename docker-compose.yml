@@ -2,16 +2,18 @@ version: '3.7'
 
 services:
   web:
-    build: .
-    command: python website/manage.py runserver 0.0.0.0:8000
+    build: web
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./:/usr/src/app/
     ports:
       - 8000:8000
     env_file:
-      - ./.env
+      - web/.env
     depends_on:
       - db
+      - bot
+
   db:
     image: postgres:12.0-alpine
     user: ${user}
@@ -21,6 +23,17 @@ services:
       - POSTGRES_USER=${db_user}
       - POSTGRES_PASSWORD=${db_passwd}
       - POSTGRES_DB=${db_name}
+
+  bot:
+    build: bot
+    command: python run.py
+    volumes:
+      - ./:/usr/src/app/
+    ports:
+      - 8005:8005
+    env_file:
+      - bot/.env
+
 
 volumes:
   postgres_data:
