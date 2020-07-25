@@ -26,7 +26,7 @@ services:
 
   bot:
     build: bot
-    command: python run.py
+    command: python bot_server.py
     volumes:
       - ./:/usr/src/app/
     ports:
