@@ -4,8 +4,10 @@ This file simply contains functions meant to gather data and credentials.
 """
 
 import json
-import requests
+
 import pandas as pd
+import requests
+
 
 def get_file(data_file):
     """
@@ -110,4 +112,3 @@ def recr_dict_search(obj, search, result):
             result.extend([obj[key][search]])
         elif type(obj[key]) == dict:
             recr_dict_search(obj[key], search, result)
-
