@@ -10,22 +10,25 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+import json
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+with open('.settings', 'r') as settings_file:
+    settings = json.loads(settings_file.read())
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('django_secret')
+SECRET_KEY = settings['django_secret']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = settings['debug']
 
-ALLOWED_HOSTS = os.environ.get('allowed_hosts').split(' ')
+ALLOWED_HOSTS = settings['allowed_hosts']
 
 
 # Application definition
@@ -75,12 +78,12 @@ WSGI_APPLICATION = 'stockytron.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ.get("db_engine"),
-        'NAME': os.environ.get("db_name"),
-        'USER': os.environ.get("db_user"),
-        'PASSWORD': os.environ.get("db_passwd"),
-        'HOST': os.environ.get("db_host"),
-        'PORT': os.environ.get("db_port"),
+        'ENGINE': settings['db_engine'],
+        'NAME': settings['db_name'],
+        'USER': settings['db_user'],
+        'PASSWORD': settings['db_passwd'],
+        'HOST': settings['db_host'],
+        'PORT': settings['db_port'],
     }
 }
 
