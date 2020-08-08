@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 
 services:
   web:
@@ -26,14 +26,13 @@ services:
 
   bot:
     build: bot
-    command: python run.py
+    command: python bot_server.py
     volumes:
       - ./:/usr/src/app/
     ports:
-      - 8005:8005
+      - 8060:8060
     env_file:
       - bot/.env
-
 
 volumes:
   postgres_data:

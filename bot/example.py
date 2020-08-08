@@ -1,9 +1,11 @@
 # importing needed libraries and wrapping functions in other files
 import os
+
 import numpy
-from shape_data import *
-from present_results import *
+
 from gather_data import *
+from present_results import *
+from shape_data import *
 
 # creating a scaler to scale inputs
 scaler = MinMaxScaler(feature_range=(0,1))
