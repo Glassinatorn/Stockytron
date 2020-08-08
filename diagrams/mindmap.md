@@ -5,7 +5,7 @@ parts are needed to make it done.
 
 ## web
 
-- ✔ 😂😁 client for grpc [v]
+- client for grpc [v]
 
 - frontend (website) [v]
 
