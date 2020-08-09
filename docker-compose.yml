@@ -32,8 +32,6 @@ services:
       - ./:/usr/src/app/
     ports:
       - 8060:8060
-    env_file:
-      - bot/.env
 
 volumes:
   postgres_data:
