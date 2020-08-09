@@ -9,4 +9,4 @@ def stock_to_db(json_data):
     ----------
     json_data : dictionary with data to be stored.
     """
-    config = get_file('.config')
+    config = get_file('.settings')
