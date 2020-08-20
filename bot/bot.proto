@@ -4,7 +4,6 @@ message StockRequest { string StockName = 1; }
 
 message Stock {
     string StockName = 1;
-    string StockName = 1;
     float price = 2;
 }
 
