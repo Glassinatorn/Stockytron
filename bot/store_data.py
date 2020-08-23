@@ -20,5 +20,6 @@ def stock_to_db(json_data):
 
     cursor = db_connection.cursor()
     cursor.execute("""SELECT * FROM django_migrations""")
+    cursor.execute("""SELECT * FROM django_migrations""")
     result = cursor.fetchall()
     print(result)
