@@ -18,12 +18,14 @@ services:
     user: ${user}
     volumes:
       - ./data/postgres_data:/var/lib/postgresql/data/
+      - ./data/pg-init-scripts:/docker-entrypoint-initdb.d
     env_file:
       - .env
     environment:
       - POSTGRES_USER=${db_user}
       - POSTGRES_PASSWORD=${db_passwd}
       - POSTGRES_DB=${db_name}
+      - POSTGRES_MULTIPLE_DATABASES=Stocks
 
   bot:
     build: bot
