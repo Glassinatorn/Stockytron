@@ -1,5 +1,5 @@
 __pycache__
-data/
+postgres_data
 .tokens
 .env
 .secrets
@@ -14,3 +14,4 @@ media
 
 # everythig else
 tmp_*
+*.csv
