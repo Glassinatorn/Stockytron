@@ -1,22 +1,23 @@
 #!/bin/bash
 
-set -e
-set -u
+# creating and importing tables with data
+for FILE in /home/*.csv; do
+    NAME=$(printf "$FILE" |
+        cut -d '/' -f 3 |
+        cut -d '.' -f 1 |
+        tr '[:upper:]' '[:lower:]')
 
-function create_user_and_database() {
-    local database=$1
-    echo "  Creating user and database '$database'"
-    psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
-	    CREATE USER $database;
-	    CREATE DATABASE $database;
-	    GRANT ALL PRIVILEGES ON DATABASE $database TO $database;
-EOSQL
-}
+    psql -c "CREATE TABLE $NAME \
+        (date date PRIMARY KEY, \
+        open FLOAT, \
+        high FLOAT, \
+        low FLOAT, \
+        close FLOAT, \
+        adj FLOAT, \
+        volume FLOAT);" \
+        -U django -d intraday
 
-if [ -n "$POSTGRES_MULTIPLE_DATABASES" ]; then
-    echo "Multiple database creation requested: $POSTGRES_MULTIPLE_DATABASES"
-    for db in $(echo $POSTGRES_MULTIPLE_DATABASES | tr ',' ' '); do
-        create_user_and_database $db
-    done
-    echo "Multiple databases created"
-fi
+    psql -c "\copy \
+        $NAME
+        FROM $FILE csv" -U django -d intraday
+done

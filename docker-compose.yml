@@ -19,10 +19,11 @@ services:
     volumes:
       - ./db/postgres_data:/var/lib/postgresql/data/
       - ./db/pg-init-scripts:/docker-entrypoint-initdb.d
+      - ./db/data/csv/:/home/
     environment:
       - POSTGRES_USER=${db_user}
       - POSTGRES_PASSWORD=${db_passwd}
-      - POSTGRES_MULTIPLE_DATABASES=stocks,dev
+      - POSTGRES_MULTIPLE_DATABASES=intraday,django
 
   bot:
     build: bot

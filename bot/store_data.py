@@ -14,12 +14,11 @@ def stock_to_db(json_data):
     settings = get_file('.settings')
     db_connection = psycopg2.connect(host=settings['db_host'],
                                      port=settings['db_port'],
-                                     database=settings['db_name'],
+                                     database=settings['db_stocks'],
                                      user=settings['db_user'],
                                      password=settings['db_passwd'])
 
     cursor = db_connection.cursor()
-    cursor.execute("""SELECT * FROM django_migrations""")
-    cursor.execute("""SELECT * FROM django_migrations""")
+    cursor.execute("SELECT * FROM intraday")
     result = cursor.fetchall()
     print(result)
