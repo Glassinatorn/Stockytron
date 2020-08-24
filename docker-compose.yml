@@ -11,18 +11,20 @@ services:
     env_file:
       - web/.env
     depends_on:
-      - db
       - bot
 
   db:
     image: postgres:12.0-alpine
     user: ${user}
     volumes:
-      - ./data/postgres_data:/var/lib/postgresql/data/
+      - ./db/postgres_data:/var/lib/postgresql/data/
+      - ./db/pg-init-scripts:/docker-entrypoint-initdb.d
+      - ./db/data/csv/:/home/
     environment:
       - POSTGRES_USER=${db_user}
       - POSTGRES_PASSWORD=${db_passwd}
-      - POSTGRES_DB=${db_name}
+      - POSTGRES_DATABASES=${db_django},daily,time_series
+      - DB_DJANGO=${db_django}
 
   bot:
     build: bot
@@ -31,8 +33,6 @@ services:
       - ./:/usr/src/app/
     ports:
       - 8060:8060
-    env_file:
-      - bot/.env
 
 volumes:
   postgres_data:

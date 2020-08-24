@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import bot_pb2 as bot__pb2
+from . import bot_pb2 as bot__pb2
 
 
 class StockBotStub(object):
@@ -54,6 +54,7 @@ class StockBot(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -62,4 +63,4 @@ class StockBot(object):
             bot__pb2.StockRequest.SerializeToString,
             bot__pb2.Stock.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

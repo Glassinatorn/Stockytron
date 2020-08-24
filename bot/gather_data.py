@@ -28,6 +28,7 @@ def get_file(data_file):
         data = pd.read_csv(data_file).to_json()
 
     else:
+        print(data_file)
         with open(data_file, 'r') as tmp_file:
             data = json.loads(tmp_file.read())
 

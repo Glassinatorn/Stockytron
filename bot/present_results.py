@@ -1,5 +1,6 @@
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
+
 
 def create_graph(df, y_train, y_test, scaler, predictions, name):
     """

@@ -1,8 +1,10 @@
 __pycache__
-data/
+postgres_data
+data
 .tokens
 .env
 .secrets
+.settings
 
 # Django
 db.sqlite3
@@ -10,3 +12,7 @@ db.sqlite3
 *.pot
 *.pyc
 media
+
+# everythig else
+tmp_*
+*.csv
