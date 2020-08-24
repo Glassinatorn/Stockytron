@@ -23,7 +23,8 @@ services:
     environment:
       - POSTGRES_USER=${db_user}
       - POSTGRES_PASSWORD=${db_passwd}
-      - POSTGRES_MULTIPLE_DATABASES=intraday,django
+      - POSTGRES_DATABASES=${db_django},daily,time_series
+      - DB_DJANGO=${db_django}
 
   bot:
     build: bot
