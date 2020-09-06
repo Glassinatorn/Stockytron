@@ -30,8 +30,3 @@ def stock_to_db(json_data, stock_name, db_name):
 
     f = open(stock_name + '.csv')
     cursor.copy_from(f, '"' + stock_name.lower() + '"')
-
-    # importing data from created csv file into db
-    #cursor.execute("COPY " + " FROM " + " CSV")
-    #result = cursor.fetchall()
-    #print(result)
