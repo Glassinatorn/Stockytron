@@ -8,6 +8,7 @@ from present_results import *
 from shape_data import *
 from store_data import *
 
+# testing gru model with tensorflow
 # scaler = MinMaxScaler(feature_range=(0,1))
 #
 #
@@ -52,21 +53,14 @@ from store_data import *
 # print("Average distance:" + str(mean))
 
 
-###########################################
+#testing source and tokens
 
-         #testing source and tokens
-
-###########################################
 # tokens = get_file("../data/.tokens.json")
 # sources = get_file("../data/.sources.json")
 # all_data = get_all(tokens, sources)
 # print(all_data)
 
-###########################################
-
-        #testing creating database
-
-###########################################
+#testing importing to the database
 
 tmp = get_file("AAPL.csv")
-stock_to_db(tmp)
+stock_to_db(json_data=tmp, stock_name="AAPL", db_name="db_daily")
