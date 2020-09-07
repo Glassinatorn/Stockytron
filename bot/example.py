@@ -3,10 +3,10 @@ import os
 
 import numpy
 
-from gather_data import *
-from present_results import *
-from shape_data import *
-from store_data import *
+from .gather_data import *
+from .present_results import *
+from .shape_data import *
+from .store_data import *
 
 # testing gru model with tensorflow
 # scaler = MinMaxScaler(feature_range=(0,1))
@@ -51,7 +51,6 @@ from store_data import *
 #     mean += accuracy[_]
 # mean = mean/100
 # print("Average distance:" + str(mean))
-
 
 #testing source and tokens
 
