@@ -6,7 +6,6 @@ parts are needed to make it done.
 ## web
 
 - client for grpc [v]
-
 - frontend (website) [v]
 
 ## bot
@@ -14,10 +13,14 @@ parts are needed to make it done.
 - grpc server [v]
 - machine learning model for predictions [v]
 - heavier calculations [ ]
+- gather news []
+- gather stocks []
 
 ## db
 
-- database [v]
+- django database [v]
+- stocks database [v]
+- news database [ ]
 
 # documentation
 
